@@ -21,10 +21,14 @@ public class Bank {
         Scanner read = new Scanner (System.in);
         
         do{
-            System.out.println("Crear cuenta");
-            System.out.println("ver estado de la cuenta");
-            System.out.println("Accion");
-            System.out.println("salir");
+            System.out.println("************   MENU  ************ ");
+            System.out.println("   OPCION                 ESCRIBIR ");
+            System.out.println("");
+            System.out.println("Crear cuenta              (crear)");
+            System.out.println("ver estado de la cuenta   (ver)");
+            System.out.println("Accion                    (accion)");
+            System.out.println("cambiar datos             (cambiar)");
+            System.out.println("salir                     (salir)");
             String word = read.next();
             
             if(word.equalsIgnoreCase("crear")){
@@ -73,6 +77,34 @@ public class Bank {
                     account.withdrawals(money);
                 }
             }
+            
+            else if(word.equalsIgnoreCase("cambiar")){
+                System.out.println("ingresa el DNI de la persona");
+                int DNI = read.nextInt();
+                BankAccount account = searchAccount(DNI);
+                System.out.println("Que dato quires cambiar?");
+                System.out.println("edad");
+                System.out.println("altura");                
+                System.out.println("peso");
+                word = read.next();
+                if(word.equalsIgnoreCase("edad")){
+                    System.out.println("ingrese la edad");
+                    int age = read.nextInt();
+                    account.headline.setAge(age);
+                }
+                else if(word.equalsIgnoreCase("altura")){
+                    System.out.println("ingrese la altura");
+                    double heigth = read.nextDouble();
+                    account.headline.setHeigth(heigth);
+                }
+                
+                else if(word.equalsIgnoreCase("peso")){
+                    System.out.println("ingrese el peso");
+                    double weigth = read.nextDouble();
+                    account.headline.setWeigth(weigth);
+                }
+            }
+            
             else {break;}
             
         }
